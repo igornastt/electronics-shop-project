@@ -31,8 +31,8 @@ class Item:
 
     def __add__(self, other):
         if issubclass(other.__class__, self.__class__):
-            return self.quantity + other.quantity
-        return None
+            return int(self.quantity) + int(other.quantity)
+        raise ValueError("Складывать можно только экземпляры классов Item и Phone")
 
     def calculate_total_price(self) -> float:
         """

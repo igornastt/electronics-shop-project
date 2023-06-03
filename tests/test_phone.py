@@ -2,6 +2,11 @@ from src.item import Item
 from src.phone import Phone
 
 
+def test_phone():
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert isinstance(phone1, Phone)
+
+
 def test_repr():
     phone1 = Phone("iPhone 14", 120_000, 5, 2)
     assert repr(phone1) == "Phone('iPhone 14', 120000, 5, 2)"
@@ -21,5 +26,5 @@ def test_add():
 
 
 def test_number_of_sim():
-    phone1 = Phone("iPhone 14", 120_000, 5, 0)
-    assert phone1.number_of_sim == 0
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert phone1.number_of_sim == 2
