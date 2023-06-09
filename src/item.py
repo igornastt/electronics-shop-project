@@ -1,4 +1,7 @@
 import csv
+import os
+
+from tomlkit import items
 
 
 class InstantiateCSVError(Exception):
@@ -78,15 +81,16 @@ class Item:
         try:
             with open('../src/items.csv', newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
-
                 for row in reader:
                     cls(row['name'], row['price'], row['quantity'])
 
-
         except FileNotFoundError:
             print("Отсутствует файл item.csv")
-        except InstantiateCSVError:
+
+        except KeyError as ex:
             print("Файл item.csv поврежден")
+            raise InstantiateCSVError
+
 
 
     @staticmethod
